@@ -53,10 +53,10 @@ export function buildLoaders({ mode }: BuildOptions): ModuleOptions['rules'] {
       {
         loader: 'ts-loader',
         options: {
-          transpileOnly: true
-        }
-      }
-    ]    
+          transpileOnly: true,
+        },
+      },
+    ],
   }
 
   return [assetLoader, svgrLoader, scssLoader, tsLoader]

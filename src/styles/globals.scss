@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('./vars.scss');
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: var(--light-grey);
+  font-family: 'PT Sans', serif;
+  color: var(--dark-blue);
+}
+
+h1 {
+  font-size: clamp(1.25rem, 3.75vw + 0.125rem, 3.5rem);
+  line-height: 120%;
+  margin: 0;
+}
+
+ul, li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+p {
+  margin: 0;
+}
+
+:global {
+  #root {
+    height: 100%;
+  }
+
+  .container {
+    padding-left: 80px;
+    padding-right: 80px;
+
+    @media (max-width: 768px) {
+      padding-left: 40px;
+      padding-right: 40px;
+    }
+
+    @media (max-width: 480px) {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  }
+
+  .btn {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    padding: 0;
+    border: 1px solid var(--dark-blue--opacity-05);
+    transition-duration: var(--transition-duration);
+
+    &:hover {
+      background-color: var(--white);
+    }
+
+    &:disabled {
+      opacity: .5;
+    }
+
+    &-round {
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+    }
+
+    &-nav {
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: calc(50% - 4px);
+        display: block;
+        margin: auto;
+        width: 8px;
+        height: 8px;
+        border-width: 0 0 2px 2px;
+        border-style: solid;
+        border-color: var(--dark-blue);
+      }
+
+      &--prev {
+        &::after {
+          left: calc(50% - 2px);
+          transform: rotate(45deg);
+        }
+      }
+
+      &--next {
+        &::after {
+          left: calc(50% - 6px);
+          transform: rotate(225deg);
+        }
+      }
+    }
+  }
+}

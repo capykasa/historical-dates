@@ -1,11 +1,30 @@
 .events {
+  &-section {
+    position: relative;
+
+    @media (max-width: 768px) {
+      margin-top: 20px;
+    }
+  }
+
+  &-title {
+    font-weight: 700;
+    position: absolute;
+    top: -50px;
+
+    display: none;
+
+    @media (max-width: 768px) {
+      display: block;
+    }
+  }
+
   &-wrapper {
     display: flex;
     flex-direction: column;
     gap: 56px;
 
     @media (max-width: 768px) {
-      margin-top: 20px;
       gap: 78px;
     }
   }
@@ -19,9 +38,21 @@
       order: 1;
     }
 
+    @media (max-width: 480px) {
+      gap: 10px;
+    }
+
+    &__pages {
+      font-size: 14px;
+    }
+
     &__buttons {
       display: flex;
       gap: 20px;
+
+      @media (max-width: 480px) {
+        gap: 8px;
+      }
     }
   }
 
@@ -32,6 +63,33 @@
       position: relative;
     }
 
+    &__button-prev {
+      width: 40px;
+      height: 40px;
+      background-color: var(--white);
+      border: none;
+      box-shadow: 0 0 15px var(--blue--opacity-01);
+
+      position: absolute;
+      top: 40px;
+      left: -60px;
+
+      @media (max-width: 768px) {
+        display: none;
+      }
+
+      &:hover {
+        box-shadow: 0 0 15px var(--blue--opacity-05);
+      }
+
+      &::after {
+        width: 6px;
+        height: 6px;
+        left: calc(50% - 3px);
+        border-color: var(--blue);
+      }
+    }
+
     &__button-next {
       width: 40px;
       height: 40px;
@@ -40,8 +98,8 @@
       box-shadow: 0 0 15px var(--blue--opacity-01);
 
       position: absolute;
-      top: calc(50% - 40px / 2);
-      right: -40px;
+      top: 40px;
+      right: -60px;
 
       @media (max-width: 768px) {
         display: none;

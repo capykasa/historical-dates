@@ -48,79 +48,6 @@
       border: none;
     }
   }
-
-  &__date-range {
-    position: relative;
-  }
-}
-
-.date-range {
-  position: relative;
-  z-index: -2;
-
-  display: flex;
-  justify-content: center;
-  gap: 120px;
-  width: 100%;
-  padding-top: 100px;
-  padding-bottom: 100px;
-
-  font-weight: 700;
-  font-size: clamp(3.5rem, 15vw - 1rem, 12.5rem);
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background-color: var(--dark-blue--opacity-01);
-
-    @media (max-width: 768px) {
-      top: 100%;
-    }
-  }
-
-  @media (max-width: 768px) {
-    gap: 64px;
-    padding-top: 56px;
-    padding-bottom: 56px;
-  }
-
-  @media (max-width: 480px) {
-    gap: 32px;
-  }
-
-  &__start {
-    color: var(--blue);
-  }
-
-  &__end {
-    color: var(--pink);
-  }
-}
-
-.range-list {
-  width: 530px;
-  height: 530px;
-  border: 1px solid var(--dark-blue--opacity-02);
-  border-radius: 50%;
-
-  &-wrapper {
-    display: flex;
-    justify-content: center;
-
-    position: absolute;
-    z-index: -1;
-    top: calc(50% - (530px / 2));
-    left: 0;
-    width: 100%;
-
-    @media (max-width: 768px) {
-      display: none;
-    }
-  }
 }
 
 .events {
@@ -200,6 +127,14 @@
 
       @media (max-width: 480px) {
         font-size: 16px;
+      }
+    }
+
+    &__desc {
+      font-size: 20px;
+
+      @media (max-width: 480px) {
+        font-size: 14px;
       }
     }
   }

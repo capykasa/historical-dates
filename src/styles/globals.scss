@@ -58,7 +58,7 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: none;
+    background: var(--light-grey);
     padding: 0;
     border: 1px solid var(--dark-blue--opacity-05);
     transition-duration: var(--transition-duration);

@@ -1,4 +1,4 @@
-import styles from './App.module.scss'
+import './App.scss'
 import { historicalDates } from '@/constants/dates'
 import { DateRange } from '../DateRange/DateRange'
 import { EventsBlock } from '../EventsBlock/EventsBlock'
@@ -10,9 +10,9 @@ export const App = () => {
   const [datePage, setDatePage] = useState(0)
 
   return (
-    <div className={styles.main}>
-      <div className={styles['dates-page']}>
-        <h1 className={`${styles['dates-page__header']} container`}>Исторические даты</h1>
+    <div className='main'>
+      <div className='dates-page'>
+        <h1 className='dates-page__header container'>Исторические даты</h1>
 
         <DateRange dates={dates} datePage={datePage} setDatePage={setDatePage} />
 

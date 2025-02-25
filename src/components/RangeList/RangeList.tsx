@@ -1,9 +1,9 @@
-import styles from './RangeList.module.scss'
+import './RangeList.scss'
 import { Dispatcher } from '@/types/Dispatcher'
 import { HistoricalDate } from '@/types/HistoricalDate'
 import { useEffect, useRef, useState } from 'react'
-import gsap from 'gsap'
 import { findDistanceOfArrayItems } from '@/utils'
+import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 
 interface DateRangeProps {
@@ -21,7 +21,7 @@ export const RangeList = ({ dates, datePage, setDatePage }: DateRangeProps) => {
 
   const [roundRotate, setRoundRotate] = useState(startDeg)
   const [activePage, setActivePage] = useState(datePage)
-
+  
   const rangeListRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -35,7 +35,7 @@ export const RangeList = ({ dates, datePage, setDatePage }: DateRangeProps) => {
     if (pageDiffArr[0]) deg = deg * -1
 
     gsap.to(rangeListRef.current, {
-      rotation: `+=${deg}`,
+      rotation: `${roundRotate + deg}`,
       onUpdate: () => setActivePage(datePage),
     })
 
@@ -43,26 +43,20 @@ export const RangeList = ({ dates, datePage, setDatePage }: DateRangeProps) => {
   }, [datePage])
 
   return (
-    <div className={styles['range-list-wrapper']}>
-      <div className={styles['range-list']} ref={rangeListRef}>
+    <div className="range-list-wrapper">
+      <div className="range-list" ref={rangeListRef}>
         {datePages.map((page, i) => (
-          <div
-            key={i}
-            className={styles['range-list__button-wrapper']}
-            style={{ rotate: `${(i * 360) / datePages.length}deg` }}
-          >
+          <div key={i} className="range-list__button-wrapper" style={{ rotate: `${(i * 360) / datePages.length}deg` }}>
             <button
-              className={`${styles['range-list__button']} ${
-                datePage === page ? styles['range-list__button--active'] : ''
-              } btn btn-round`}
+              className={`range-list__button ${datePage === page ? ' range-list__button--active' : ''} btn btn-round`}
               onClick={() => setDatePage(page)}
             >
               <div
                 style={{ rotate: `${360 - (i * 360) / datePages.length - roundRotate}deg` }}
-                className={styles['range-list__button-desc']}
+                className="range-list__button-desc"
               >
-                <span className={styles['range-list__button-number']}>{page + 1}</span>
-                <span className={styles['range-list__button-title']}>{dates[page].title}</span>
+                <span className="range-list__button-number">{page + 1}</span>
+                <span className="range-list__button-title">{dates[page].title}</span>
               </div>
             </button>
           </div>

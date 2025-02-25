@@ -1,4 +1,15 @@
 .events {
+  max-width: 100%;
+  position: relative;
+  visibility: hidden;
+  opacity: 0;
+
+  &--show {
+    visibility: visible;
+    opacity: 1;
+    transition-duration: calc(var(--transition-duration) * 2);
+  }
+
   &-section {
     position: relative;
 
@@ -23,6 +34,7 @@
     display: flex;
     flex-direction: column;
     gap: 56px;
+    position: relative;
 
     @media (max-width: 768px) {
       gap: 78px;
@@ -33,6 +45,8 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+    width: fit-content;
+    z-index: 1;
 
     @media (max-width: 768px) {
       order: 1;
@@ -54,16 +68,35 @@
         gap: 8px;
       }
     }
+
+    &__button {
+      @media (max-width: 480px) {
+        width: 25px;
+        height: 25px;
+      }
+    }
   }
 
-  &-list {
-    display: flex;
+  & .swiper-wrapper {
+    & .swiper-slide {
+      height: 100%;
 
-    &-wrapper {
-      position: relative;
+      @media (max-width: 480px) {
+        height: 150px;
+      }
+
+      &:not(.swiper-slide-active) {
+        opacity: 1;
+
+        @media (max-width: 768px) {
+          opacity: 0.5;
+        }
+      }
     }
+  }
 
-    &__button-prev {
+  &-slider {
+    &-button {
       width: 40px;
       height: 40px;
       background-color: var(--white);
@@ -71,8 +104,8 @@
       box-shadow: 0 0 15px var(--blue--opacity-01);
 
       position: absolute;
-      top: 40px;
-      left: -60px;
+      z-index: 2;
+      top: 160px;
 
       @media (max-width: 768px) {
         display: none;
@@ -85,35 +118,27 @@
       &::after {
         width: 6px;
         height: 6px;
-        left: calc(50% - 3px);
         border-color: var(--blue);
       }
-    }
 
-    &__button-next {
-      width: 40px;
-      height: 40px;
-      background-color: var(--white);
-      border: none;
-      box-shadow: 0 0 15px var(--blue--opacity-01);
-
-      position: absolute;
-      top: 40px;
-      right: -60px;
-
-      @media (max-width: 768px) {
+      &:disabled {
         display: none;
       }
 
-      &:hover {
-        box-shadow: 0 0 15px var(--blue--opacity-05);
+      &--prev {
+        left: -60px;
+
+        &::after {
+          left: calc(50% - 3px);
+        }
       }
 
-      &::after {
-        width: 6px;
-        height: 6px;
-        left: calc(50% - 5px);
-        border-color: var(--blue);
+      &--next {
+        right: -60px;
+
+        &::after {
+          left: calc(50% - 5px);
+        }
       }
     }
   }
@@ -122,6 +147,7 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
+    max-width: 400px;
 
     &__title {
       font-family: 'Bebas Neue', serif;
@@ -140,6 +166,8 @@
 
     &__desc {
       font-size: 20px;
+      max-height: 100%;
+      overflow: auto;
 
       @media (max-width: 480px) {
         font-size: 14px;

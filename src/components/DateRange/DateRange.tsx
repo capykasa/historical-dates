@@ -1,4 +1,4 @@
-import styles from './DateRange.module.scss'
+import './DateRange.scss'
 import { Dispatcher } from '@/types/Dispatcher'
 import { HistoricalDate } from '@/types/HistoricalDate'
 import { useRef, useState } from 'react'
@@ -40,12 +40,12 @@ export const DateRange = ({ dates, datePage, setDatePage }: DateRangeProps) => {
   return (
     <>
       {dates.length > 0 && (
-        <section className={`${styles['date-range-wrapper']} container`}>
-          <div className={styles['date-range']}>
-            <span className={styles['date-range__start']} ref={dateStartRef}>
+        <section className='date-range-wrapper container'>
+          <div className='date-range'>
+            <span className='date-range__start' ref={dateStartRef}>
               {dateRangeStart}
             </span>
-            <span className={styles['date-range__end']} ref={dateEndRef}>
+            <span className='date-range__end' ref={dateEndRef}>
               {dateRangeEnd}
             </span>
           </div>

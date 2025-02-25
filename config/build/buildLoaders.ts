@@ -32,18 +32,9 @@ export function buildLoaders({ mode }: BuildOptions): ModuleOptions['rules'] {
     ],
   }
 
-  const cssLoaderWithModules = {
-    loader: 'css-loader',
-    options: {
-      modules: {
-        localIdentName: isDev ? '[path][name]__[local]' : '[hash:base64:8]',
-      },
-    },
-  }
-
   const scssLoader = {
-    test: /\.s[ac]ss$/i,
-    use: [isDev ? 'style-loader' : MiniCssExtractPlugin.loader, cssLoaderWithModules, 'sass-loader'],
+    test: /\.s[ac]ss}|css$/i,
+    use: [isDev ? 'style-loader' : MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
   }
 
   const tsLoader = {
